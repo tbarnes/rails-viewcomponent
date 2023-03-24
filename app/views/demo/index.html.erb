@@ -1,0 +1,7 @@
+<% Issue.all.each do |issue| %>
+  <% if issue.pull_request %>
+    <%= render(PullRequests::BadgeComponent.new(state: issue.pull_request.state.to_sym, is_draft: issue.pull_request.draft?)) %>
+  <% else %>
+    <%= render(Issues::BadgeComponent.new(state: issue.state.to_sym)) %>
+  <% end %>
+<% end %>
